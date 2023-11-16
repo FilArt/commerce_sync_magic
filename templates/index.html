@@ -1,0 +1,54 @@
+<!-- templates/index.html -->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block default %}
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <div class="ui raised very padded  text container segment">
+            <h2 class="ui  header">Register</h2>
+            <form class="ui  large form" action="/users/register" method="post">
+                <div class="field">
+                    <label>Username</label>
+                    <input type="text" name="username" placeholder="Username" required>
+                </div>
+                <div class="field">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <button class="ui  button" type="submit">Register</button>
+            </form>
+
+            <hr>
+
+            <h2 class="ui  header">Login</h2>
+            <form class="ui  large form" action="/users/login" method="post">
+                <div class="field">
+                    <label>Username</label>
+                    <input type="text" name="username" placeholder="Username" required>
+                </div>
+                <div class="field">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <button class="ui  button" type="submit">Login</button>
+            </form>
+
+            <br>
+
+            <a class="ui  button" href="dashboard">Go to Dashboard</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+{% endblock %}

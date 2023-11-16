@@ -1,0 +1,2 @@
+class ShopifyProduct:
+    pass

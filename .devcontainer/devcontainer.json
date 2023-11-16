@@ -1,0 +1,22 @@
+// .devcontainer/devcontainer.json
+{
+	"name": "commerce_sync_magic",
+	"image": "python:3.12-alpine",
+	"portsAttributes": {
+		"9000": {
+			"label": "Hello Remote World",
+			"onAutoForward": "notify"
+		}
+	},
+	"postCreateCommand": "pip3 install -r requirements.txt",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.vscode-pylance"
+			]
+		}
+	},
+	"features": {
+		"ghcr.io/cirolosapio/devcontainers-features/alpine-git:0": {}
+	}
+}
