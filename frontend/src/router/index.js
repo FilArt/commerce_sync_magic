@@ -1,10 +1,18 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '@/store/auth'
+
+const isAuthenticated = () => useAuthStore().isAuthenticated
 
 const routes = [
   {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/login'),
+  },
+  {
     path: '/',
-    component: () => import('@/layouts/default/Default.vue'),
+    component: () => import('@/layouts/default'),
     children: [
       {
         path: '',
@@ -18,7 +26,7 @@ const routes = [
         path: '/settings',
         name: 'Settings',
         component: () => import('@/views/settings'),
-      }
+      },
     ],
   },
 ]
@@ -26,6 +34,14 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+})
+
+router.beforeEach((to, from, next) => {
+  if (!isAuthenticated() && to.name !== 'Login') {
+    next({ name: 'Login' })
+  } else {
+    next()
+  }
 })
 
 export default router

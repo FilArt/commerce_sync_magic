@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@mdi/font": "7.0.96",
+    "@shopify/shopify-api": "^8.0.2",
+    "mande": "^2.0.8",
     "pinia": "^2.0.23",
     "roboto-fontface": "*",
     "vue": "^3.2.0",
