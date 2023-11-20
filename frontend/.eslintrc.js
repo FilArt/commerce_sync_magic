@@ -8,6 +8,6 @@ module.exports = {
     'eslint:recommended',
   ],
   rules: {
-    'vue/multi-word-component-names': 'off',   
+    'vue/multi-word-component-names': 'off',
   }
 }

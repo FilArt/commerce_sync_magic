@@ -1,12 +1,19 @@
 from fastapi import FastAPI
-from app.api.customer import customer_router
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.auth import auth_router
+from app.db import create_db_and_tables
+from contextlib import asynccontextmanager
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    create_db_and_tables()
+    yield
+
 
 app = FastAPI()
 
 # routers
-app.include_router(customer_router, prefix="/api/customer", tags=["Customer"])
 app.include_router(auth_router, prefix="/api/auth", tags=["Auth"])
 
 # cors
@@ -20,6 +27,3 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# app.include_router(shopify.router, prefix="/shopify", tags=["Shopify"])
-# app.include_router(depop.router, prefix="/depop", tags=["Depop"])

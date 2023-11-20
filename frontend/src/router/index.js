@@ -11,6 +11,11 @@ const routes = [
     component: () => import('@/views/login'),
   },
   {
+    path: '/auth',
+    name: 'Auth',
+    component: () => import('@/views/auth'),
+  },
+  {
     path: '/',
     component: () => import('@/layouts/default'),
     children: [
@@ -37,7 +42,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (!isAuthenticated() && to.name !== 'Login') {
+  if (!isAuthenticated() && !['Login', 'Auth'].includes(to.name)) {
     next({ name: 'Login' })
   } else {
     next()

@@ -1,14 +1,28 @@
 <template>
   <v-app>
     <v-main>
-      <v-container>
-        <v-card>
-          <v-card-title>Login with Shopify</v-card-title>
-          <v-card-text>
-            <v-text-field v-model="shopName" label="Shop Name" />
-            <v-btn color="primary" @click="loginWithShopify">Login</v-btn>
-          </v-card-text>
-        </v-card>
+      <v-container class="d-flex flex-column text-center">
+        <v-form @submit.prevent="loginWithShopify">
+          <v-card class="ma-auto pa-2" max-width="750" min-width="500">
+            <v-card-title> Login </v-card-title>
+            <v-card-text>
+              <v-text-field v-model="shopName" label="Shop Name" name="shop" />
+              <v-alert variant="outlined" type="info">
+                You will be redirected to Shopify to login
+              </v-alert>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn
+                block
+                color="primary"
+                append-icon="mdi-login"
+                type="submit"
+              >
+                Login with Shopify
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-form>
       </v-container>
     </v-main>
   </v-app>
